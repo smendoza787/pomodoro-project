@@ -1,5 +1,6 @@
 var time = 5;
 var countdownFunction, update;
+var audio = new Audio('./ding.mp3');
 
 function updateMessage() {
   var message = document.getElementById('message');
@@ -8,6 +9,10 @@ function updateMessage() {
 
 function countdown() {
   time--;
+
+  if (time == 0) {
+    audio.play();
+  }
 
   if (time == -1) {
     stopCountdown();
@@ -20,8 +25,10 @@ function stopCountdown() {
 }
 
 function start() {
-  countdownFunction = setInterval(countdown, 1000);
-  update = setInterval(updateMessage, 500);
+  if (time !== 0) {
+    countdownFunction = setInterval(countdown, 1000);
+    update = setInterval(updateMessage, 500);
+  }
 }
 
 function stop() {
