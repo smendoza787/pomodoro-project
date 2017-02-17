@@ -8,9 +8,9 @@ var isRunning = false;
 function updateMessage() {
   var message = document.getElementById('message');
   if (seconds < 10) {
-    message.innerHTML = "Minutes left: " + minutes + ":0" + seconds;
+    message.innerHTML = minutes + ":0" + seconds;
   } else {
-    message.innerHTML = "Minutes left: " + minutes + ":" + seconds;
+    message.innerHTML = minutes + ":" + seconds;
   }
 
   // When the minutes and seconds hit 0 stop the clock
@@ -46,7 +46,7 @@ function start() {
 
   if (isRunning === false && minutes >= 0) {
     countdownSec = setInterval(countdownSeconds, 1000)
-    update = setInterval(updateMessage, 200);
+    update = setInterval(updateMessage, 100);
   }
 
   isRunning = true;
